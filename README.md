@@ -35,7 +35,7 @@ git clone https://github.com/yourusername/sentiment-analysis.git
 cd sentiment-analysis
 ```
 2. Install the required Python packages:
-```bash
+``` bash
 pip install transformers torch pandas sklearn flask
 ```
 ## Download the Dataset
@@ -43,20 +43,86 @@ pip install transformers torch pandas sklearn flask
 
 2. Run the following commands to download and unzip the dataset:
 
-```bash
+``` python
 mkdir -p ~/.kaggle
 cp kaggle.json ~/.kaggle/
 chmod 600 ~/.kaggle/kaggle.json
 
 kaggle datasets download -d kazanova/sentiment140
 unzip sentiment140.zip
-```
+``` 
 ## Train the Model
 Train the model using the provided Jupyter notebook (you can use Google Colab for this step). Save the trained model weights as ` path_to_your_trained_model.pth`
 
 ## Save the Trained Model
 Save the model state dict as ` path_to_your_trained_model.pth`:
 
-```
+``` python
 torch.save(model.state_dict(), 'path_to_your_trained_model.pth')
 ```
+### Configure Flask App
+Ensure the path to the trained model in app.py matches the location where you saved the model weights.
+``` python
+model.load_state_dict(torch.load('path_to_your_trained_model.pth', map_location=torch.device('cpu')))
+```
+## Running the App
+1. Start the Flask app:
+``` bash
+python app.py
+```
+2. Open a web browser and navigate to `http://localhost:5000` to access the web interface.
+
+## API Endpoints
+
+### Health Check
+**URL**: _/health_
+
+**Method**: _GET_
+
+**Description**: Checks if the server is running.
+
+**Response**: 
+``` json
+{"status": "healthy"}
+```
+
+### Single Prediction
+
+**URL**: _/predict_
+
+**Method**: _POST_
+
+**Description**: Predicts sentiment for a single text input.
+
+**Request**
+``` json
+{
+  "text": "I love this product!"
+}
+```
+
+**Response**
+``` json
+{
+  "text": "I love this product!",
+  "label": "positive"
+}
+```
+
+## Frontend
+A simple HTML form is provided for user input:
+
+- **URL**: /
+
+- **Method**: GET
+
+- **Description**: Displays a form for text input and shows the predicted sentiment.
+
+## References
+- [Transformers Library by Hugging Face](https://huggingface.co/docs/transformers/en/index)
+
+- [Flask Web Framework](https://flask.palletsprojects.com/en/3.0.x/)
+
+- [Kaggle Sentiment140 Dataset](https://www.kaggle.com/datasets/kazanova/sentiment140)
+
+
