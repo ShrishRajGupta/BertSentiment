@@ -1,15 +1,20 @@
+<div align="centre">
+  
 # Sentiment Analysis with BERT
 
 This project demonstrates how to create a sentiment analysis model using BERT, Flask, and a dataset from Kaggle. The model can predict the sentiment (positive or negative) of given text inputs.
 
 ## Table of Contents
-
+<details>
+  <summary>Expand</summary>
+  
 - [Overview](#overview)
 - [Setup](#setup)
 - [Running the App](#running-the-app)
 - [API Endpoints](#api-endpoints)
 - [Frontend](#frontend)
 - [References](#references)
+</details>
 
 ## Overview
 
@@ -19,7 +24,7 @@ This project includes:
 3. A simple web interface for users to input text and receive sentiment predictions.
 
 ## Setup
-
+👾
 ### Prerequisites
 
 - Python 3.6 or higher
@@ -30,12 +35,12 @@ This project includes:
 
 1. Clone this repository:
 
-```bash
+```
 git clone https://github.com/yourusername/sentiment-analysis.git
 cd sentiment-analysis
 ```
 2. Install the required Python packages:
-``` bash
+``` 
 pip install transformers torch pandas sklearn flask
 ```
 ## Download the Dataset
@@ -43,7 +48,7 @@ pip install transformers torch pandas sklearn flask
 
 2. Run the following commands to download and unzip the dataset:
 
-``` python
+``` 
 mkdir -p ~/.kaggle
 cp kaggle.json ~/.kaggle/
 chmod 600 ~/.kaggle/kaggle.json
@@ -62,12 +67,12 @@ torch.save(model.state_dict(), 'path_to_your_trained_model.pth')
 ```
 ### Configure Flask App
 Ensure the path to the trained model in app.py matches the location where you saved the model weights.
-``` python
+``` 
 model.load_state_dict(torch.load('path_to_your_trained_model.pth', map_location=torch.device('cpu')))
 ```
 ## Running the App
 1. Start the Flask app:
-``` bash
+``` 
 python app.py
 ```
 2. Open a web browser and navigate to `http://localhost:5000` to access the web interface.
@@ -95,14 +100,14 @@ python app.py
 **Description**: Predicts sentiment for a single text input.
 
 **Request**
-``` json
+``` 
 {
   "text": "I love this product!"
 }
 ```
 
 **Response**
-``` json
+``` 
 {
   "text": "I love this product!",
   "label": "positive"
@@ -118,6 +123,17 @@ A simple HTML form is provided for user input:
 
 - **Description**: Displays a form for text input and shows the predicted sentiment.
 
+## Maintainers 
+👨‍💻
+  <div>
+      <p align="center">
+<a href="https://github.com/ShrishRajGupta/BertSentiment/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=ShrishRajGupta/BertSentiment" />
+</a></p>
+  </div>
+
+- ### [Shrish Raj Gupta](https://github.com/ShrishRajGupta)   [<img height="13" src="https://cdn.svgporn.com/logos/linkedin.svg" />](https://www.linkedin.com/in/shrishrajgupta/)
+
 ## References
 - [Transformers Library by Hugging Face](https://huggingface.co/docs/transformers/en/index)
 
@@ -125,4 +141,11 @@ A simple HTML form is provided for user input:
 
 - [Kaggle Sentiment140 Dataset](https://www.kaggle.com/datasets/kazanova/sentiment140)
 
+</div>
+
+## 💖 Like this project ?
+
+Leave a ⭐ If you think this project is cool.
+ <p align="center"><img src="https://github.githubassets.com/images/mona-whisper.gif" alt="mona whisper" /></p>
+ 
 
